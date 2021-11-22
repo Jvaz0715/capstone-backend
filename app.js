@@ -5,12 +5,9 @@ const rateLimit = require("express-rate-limit"); //this will be used to limit wr
 
 const app = express();
 
+const ErrorMessageHandlerClass = require("./routes/utils/ErrorMessageHandlerClass.js")
 
-// TODO: CREATE ERROR MESSAGE HANDLER CLASS
-// const ErrorMessageHandlerClass = require("./routes/utils/ErrorMessageHandlerClass.js")
-
-// TODO: CREATE errorController
-// const errorController = require("./routes/user/userRouter");
+const errorController = require("./routes/user/userRouter");
 
 // TODO: CREATE USER ROUTER AND FAVE PRODUCTS ROUTER
 // const userRouter = require("./routes/user/userRouter");
