@@ -46,7 +46,7 @@ const getAllFaveAttractions = async(req, res) => {
       let payload = await User.findOne({ email: decodedJwt.email})
          .populate({
             path: "faveAttractions",
-            model: FaveAttraction,
+            model: faveAttraction,
             select:"-__v"
          })
          .select("-attractionURL -__v -_id");
