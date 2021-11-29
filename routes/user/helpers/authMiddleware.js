@@ -67,12 +67,22 @@ function checkIsAlphaFunc(req, res, next) {
 function checkIsAlphanumericFunc(req, res, next) {
    const { errorObj } = res.locals;
 
+   if (!checkIsAlphanumeric(req.body.username)) {
+      errorObj.usernameError = "username can only have characters and numbers";
+   };
+
+   next();
+};
+
+function checkIsStrongPasswordFunc(req, res, next) {
+   const { errorObj } = res.locals;
+
    if (!checkIsStrongPassword(req.body.password)) {
       errorObj.weakPassword = "Password must include 1 lowercase, 1 uppercase, 1 special character, 1 number, and a length of 8";
    };
 
    next();
-}
+};
 
 module.exports = {
    checkIsEmptyFunc,
