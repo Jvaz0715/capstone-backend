@@ -4,18 +4,14 @@ const User = require("../../user/model/User");
 const addAttraction = async (req, res) => {
    try {
       const {
-         productTitle,
-         productImage,
-         productID,
+         attractionURL,
       } = req.body;
 
       const createdFaveAttraction = new faveAttraction({
-         productTitle,
-         productImage,
-         productID,
+         attractionURL,
       });
 
-      const savedFaveProduct = await createdFaveProduct.save();
+      const savedFaveAttraction = await createdFaveAttraction.save();
 
       const { decodedJwt } = res.locals;
 
@@ -23,7 +19,7 @@ const addAttraction = async (req, res) => {
          email: decodedJwt.email
       });
 
-      foundTargetUser.faveProducts.push(savedFaveProduct._id);
+      foundTargetUser.faveAttractions.push(savedFaveAttraction._id);
 
       await foundTargetUser.save();
 

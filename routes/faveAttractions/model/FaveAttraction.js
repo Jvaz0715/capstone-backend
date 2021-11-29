@@ -1,15 +1,9 @@
 const mongoose = require("mongoose");
 
 const faveAttractionSchema = new mongoose.Schema({
-   productTitle: {
+   attractionURL: {
       type: String,
       unique: true,
-   },
-   productImage: {
-      type: String,
-   },
-   productID: {
-      type: String,
    },
 });
 
