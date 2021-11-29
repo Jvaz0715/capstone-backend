@@ -18,6 +18,7 @@ const {
 } = require("./helpers/authMiddleware");
 
 router.get("/get-all-users", getAllUsers);
+
 router.delete("/delete-user-by-id/:id", deleteUserById);
 
 router.post(
