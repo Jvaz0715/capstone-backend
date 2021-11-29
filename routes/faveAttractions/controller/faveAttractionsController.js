@@ -36,6 +36,33 @@ const addAttraction = async (req, res) => {
 };
 
 const deleteAttraction = async(req, res, next) => {
+   try {
+      let deletedAttraction = await faveAttraction.findByIdAndRemove(req.params.id);
+
+      const { decodedJwt } = res.locals;
+
+      let foundUser = await User.findOne({
+         email: decodedJwt.email
+      });
+
+      let foundUserAttractionsArray = foundUser.faveAttractions;
+
+      let filteredAttractionsArray = foundUserAttractionsArray.filter((id) => {
+         return id.toString() !== deletedAttraction._id.toString();
+      });
+
+      foundUser.faveAttractions = filteredAttractionsArray;
+
+      await foundUser.save();
+
+      res.json({
+         message: "success",
+         payload: deletedAttraction
+      })
+
+   } catch(e) {
+      next(e);
+   };
 
 };
 

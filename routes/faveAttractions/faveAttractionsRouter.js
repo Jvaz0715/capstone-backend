@@ -12,6 +12,6 @@ router.post("/add-attraction-to-favorites", jwtMiddleware, addAttraction);
 
 router.get("/get-all-fave-attractions", jwtMiddleware, getAllFaveAttractions);
 
-router.delete("/delete-attraction-from-favorites", jwtMiddleware, deleteAttraction);
+router.delete("/delete-attraction-from-favorites/:id", jwtMiddleware, deleteAttraction);
 
 module.exports = router;
