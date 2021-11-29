@@ -16,3 +16,27 @@ const {
    checkIsEmailFunc,
    checkIsStrongPasswordFunc,
 } = require("./helpers/authMiddleware");
+
+router.get("/get-all-users", getAllUsers);
+router.delete("/delete-user-by-id/:id", deleteUserById);
+
+router.post(
+   "/sign-up",
+   checkIsUndefined,
+   checkIsEmptyFunc,
+   checkIsAlphaFunc,
+   checkIsAlphanumericFunc,
+   checkIsEmailFunc,
+   checkIsStrongPasswordFunc,
+   signup
+);
+
+router.post(
+   "/login",
+   checkIsUndefined,
+   checkIsEmptyFunc,
+   checkIsEmailFunc,
+   login
+);
+
+module.exports = router;
