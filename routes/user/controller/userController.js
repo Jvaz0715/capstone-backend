@@ -106,12 +106,25 @@ async function login(req, res) {
    };
 };
 
+// to get all users real quick
 async function getAllUsers(req, res) {
-
+   try{
+      let foundAllUsers = await User.find({});
+      res.json({message: "success", data: foundAllUsers})
+   } catch(e){
+      res.json({ message: "error", error: e });
+   }
 };
 
+// to clear users momentarily
 async function deleteUserById(req, res) {
-
+   try {
+      let deletedUser = await User.findByIdAndDelete(req.params.id);
+      
+      res.json({message: "success", data: deletedUser })
+   } catch(e) {
+      res.status(500).json({ message: "error", error: e.message })
+   }
 };
 
 module.exports = {
