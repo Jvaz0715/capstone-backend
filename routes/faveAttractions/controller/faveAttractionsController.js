@@ -1,4 +1,4 @@
-const FaveAttraction = require("../model/FaveAttraction");
+const faveAttraction = require("../model/faveAttraction");
 const User = require("../../user/model/User");
 
 const addAttraction = async (req, res) => {
@@ -7,7 +7,7 @@ const addAttraction = async (req, res) => {
          attractionURL,
       } = req.body;
 
-      const createdFaveAttraction = new FaveAttraction({
+      const createdFaveAttraction = new faveAttraction({
          attractionURL,
       });
 
