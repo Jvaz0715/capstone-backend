@@ -7,7 +7,7 @@ const addAttraction = async (req, res) => {
          attractionURL,
       } = req.body;
 
-      const createdFaveAttraction = new faveAttraction({
+      const createdFaveAttraction = new FaveAttraction({
          attractionURL,
       });
 
