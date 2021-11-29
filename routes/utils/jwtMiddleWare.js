@@ -13,6 +13,8 @@ async function checkJwtToken(req, res, next) {
             jwtToken,
             process.env.PRIVATE_JWT_KEY,
          );
+
+         res.locals.decodedJwt = decodedJwt;
          next();
       } else {
          throw {
