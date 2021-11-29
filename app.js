@@ -9,9 +9,8 @@ const ErrorMessageHandlerClass = require("./routes/utils/ErrorMessageHandlerClas
 
 const errorController = require("./routes/user/userRouter");
 
-// TODO: CREATE USER ROUTER AND FAVE PRODUCTS ROUTER
-// const userRouter = require("./routes/user/userRouter");
-// const faveProductsRouter = require("./routes/faveProducts/faveProductsRouter")
+const userRouter = require("./routes/user/userRouter");
+const faveAttractionsRouter = require("./routes/faveAttractions/faveAttractionsRouter")
 
 app.use(cors());
 // checking to see if deployed or local
@@ -31,7 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false })); //parses incoming data
 
 app.use("/api/users", userRouter);
-app.use("/api/favorite-products", faveProductsRouter);
+app.use("/api/favorite-attractions", faveAttractionsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
