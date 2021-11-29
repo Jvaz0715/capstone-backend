@@ -1,7 +1,7 @@
-const faveProduct = require("../model/FaveProduct");
+const faveAttraction = require("../model/FaveAttraction");
 const User = require("../../user/model/User");
 
-const addProduct = async (req, res) => {
+const addAttraction = async (req, res) => {
    try {
       const {
          productTitle,
@@ -9,7 +9,7 @@ const addProduct = async (req, res) => {
          productID,
       } = req.body;
 
-      const createdFaveProduct = new faveProduct({
+      const createdFaveAttraction = new faveAttraction({
          productTitle,
          productImage,
          productID,
@@ -28,27 +28,27 @@ const addProduct = async (req, res) => {
       await foundTargetUser.save();
 
       res.json({
-         message: "Product added to favorites!"
+         message: "Added to favorites!"
       });
 
    } catch(e) {
       res.status(500).json({
          e: e,
-         message: "This product is already in your favorites"
+         message: "This attraction is already in your favorites."
       })
    }
 };
 
-const deleteProduct = async(req, res, next) => {
+const deleteAttraction = async(req, res, next) => {
 
 };
 
-const getAllFaveProducts = async(req, res) => {
+const getAllFaveAttractions = async(req, res) => {
 
 };
 
 module.exports = {
-   addProduct,
-   deleteProduct,
-   getAllFaveProducts
+   addAttraction,
+   deleteAttraction,
+   getAllFaveAttractions
 };

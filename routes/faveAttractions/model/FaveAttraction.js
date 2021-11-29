@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const faveProductSchema = new mongoose.Schema({
+const faveAttractionSchema = new mongoose.Schema({
    productTitle: {
       type: String,
       unique: true,
@@ -13,4 +13,4 @@ const faveProductSchema = new mongoose.Schema({
    },
 });
 
-module.exports = mongoose.model("faveProduct", faveProductSchema);
+module.exports = mongoose.model("faveAttraction", faveAttractionSchema);

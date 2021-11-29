@@ -18,9 +18,9 @@ const userSchema = new mongoose.Schema({
    password: {
       type: String,
    },
-   faveProducts: [{
+   faveAttractions: [{
       type: mongoose.Schema.ObjectId,
-      ref: "faveProduct",
+      ref: "faveAttraction",
    }],
 });
 
