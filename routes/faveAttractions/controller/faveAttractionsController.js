@@ -56,6 +56,8 @@ const getAllFaveAttractions = async(req, res) => {
    };
 };
 
+// TODO: getAttractionDetails
+
 module.exports = {
    addAttraction,
    deleteAttraction,
