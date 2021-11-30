@@ -4,11 +4,11 @@ const User = require("../../user/model/User");
 const addAttraction = async (req, res) => {
    try {
       const {
-         attractionURL,
+         xid,
       } = req.body;
 
       const createdFaveAttraction = new faveAttraction({
-         attractionURL,
+         xid,
       });
 
       const savedFaveAttraction = await createdFaveAttraction.save();

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const faveAttractionSchema = new mongoose.Schema({
-   attractionURL: {
+   xid: {
       type: String,
    },
 });
