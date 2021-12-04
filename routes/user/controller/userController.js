@@ -85,6 +85,7 @@ async function login(req, res) {
             let jwtToken = jwt.sign(
                {
                   email: foundUser.email,
+                  username: foundUser.username,
                },
                process.env.PRIVATE_JWT_KEY,
                {
@@ -93,7 +94,7 @@ async function login(req, res) {
             );
 
             res.json({
-               message: "success",
+               message: "Success! Logged in",
                payload: jwtToken,
             });
          };
