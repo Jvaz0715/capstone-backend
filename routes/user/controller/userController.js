@@ -96,6 +96,10 @@ async function login(req, res) {
             res.json({
                message: "Success! Logged in",
                payload: jwtToken,
+               user: {
+                  email: foundUser.email,
+                  username: foundUser.username,
+               }
             });
          };
       };
