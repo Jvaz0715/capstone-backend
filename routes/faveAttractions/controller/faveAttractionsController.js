@@ -5,16 +5,36 @@ const addAttraction = async (req, res) => {
    try {
       const {
          xid,
+         attractionName,
+         city,
+         states,
+         country,
+         image,
+         attractionInfo,
+         externalURL,
+         wikiPageURL,
       } = req.body;
 
       const createdFaveAttraction = new faveAttraction({
          xid,
+         attractionName,
+         city,
+         states,
+         country,
+         image,
+         attractionInfo,
+         externalURL,
+         wikiPageURL,
       });
 
+      console.log("createdFaveAttraction")
+      console.log(createdFaveAttraction)
       const savedFaveAttraction = await createdFaveAttraction.save();
 
       const { decodedJwt } = res.locals;
-
+      
+      console.log("res.locals");
+      console.log(res.locals)
       const foundTargetUser = await User.findOne({
          email: decodedJwt.email
       });
@@ -76,7 +96,7 @@ const getAllFaveAttractions = async(req, res) => {
             model: faveAttraction,
             select:"-__v"
          })
-         .select("-attractionURL -__v -_id");
+         .select("-xid -attractionName -city -states -country -image -attractionInfo -externalURL -wikiPageURL -__v -_id");
       res.json(payload.faveAttractions)
    } catch(e) {
       res.status(500).json({ e: e, message: e.message });

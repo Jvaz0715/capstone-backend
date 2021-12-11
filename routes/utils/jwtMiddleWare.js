@@ -15,6 +15,7 @@ async function checkJwtToken(req, res, next) {
          );
 
          res.locals.decodedJwt = decodedJwt;
+      
          next();
       } else {
          throw {
@@ -23,6 +24,7 @@ async function checkJwtToken(req, res, next) {
          };
       }
    } catch(e) {
+      res.status(e.statusCode).json({ message: e.message, error: e });
       return next(e);
       /* refer to errorController */
    }
