@@ -27,14 +27,10 @@ const addAttraction = async (req, res) => {
          wikiPageURL,
       });
 
-      console.log("createdFaveAttraction")
-      console.log(createdFaveAttraction)
       const savedFaveAttraction = await createdFaveAttraction.save();
 
       const { decodedJwt } = res.locals;
       
-      console.log("res.locals");
-      console.log(res.locals)
       const foundTargetUser = await User.findOne({
          email: decodedJwt.email
       });
@@ -48,6 +44,7 @@ const addAttraction = async (req, res) => {
       });
 
    } catch(e) {
+      
       res.status(500).json({
          e: e,
          message: "This attraction is already in your favorites."
