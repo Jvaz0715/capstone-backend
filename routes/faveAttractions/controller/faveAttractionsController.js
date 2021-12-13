@@ -1,6 +1,6 @@
 const User = require("../../user/model/User");
 // having some issues in the backend
-const faveAttraction = require("../model/faveAttraction");
+const faveAttraction = require("../model/faveAttraction.js");
 
 
 const addAttraction = async (req, res) => {
