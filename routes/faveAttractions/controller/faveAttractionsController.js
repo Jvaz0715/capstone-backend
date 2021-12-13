@@ -1,4 +1,5 @@
 const faveAttraction = require("../model/faveAttraction");
+
 const User = require("../../user/model/User");
 // having some issues in the backend
 
