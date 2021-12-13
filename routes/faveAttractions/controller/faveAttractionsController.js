@@ -2,7 +2,7 @@ const User = require("../../user/model/User");
 // having some issues in the backend
 const faveAttraction = require("../model/faveAttraction.js");
 
-
+// Check to see if it works now
 const addAttraction = async (req, res) => {
    try {
       const {
