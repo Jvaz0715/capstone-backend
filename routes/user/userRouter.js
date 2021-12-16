@@ -4,8 +4,6 @@ const router = express.Router();
 const {
    signup,
    login,
-   getAllUsers,
-   deleteUserById
 } = require("./controller/userController");
 
 const {
@@ -16,10 +14,6 @@ const {
    checkIsEmailFunc,
    checkIsStrongPasswordFunc,
 } = require("./helpers/authMiddleware");
-
-router.get("/get-all-users", getAllUsers);
-
-router.delete("/delete-user-by-id/:id", deleteUserById);
 
 router.post(
    "/sign-up",

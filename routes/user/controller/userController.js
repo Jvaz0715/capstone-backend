@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const User = require("../model/User");
+const dbErrorHelper = require("../../utils/dbErrorHelper")
 
 async function signup(req, res, next) {
    const {
@@ -36,11 +37,14 @@ async function signup(req, res, next) {
       await createdUser.save();
 
       res.json({
-         message: "Success! User created"
+         message: "User created! Proceed to Login."
       });
 
    } catch (e) {
-      next(e);
+      // next(e);
+      res.status(500).json({
+         message: dbErrorHelper(e),
+      })
    }
 };
 
@@ -66,7 +70,7 @@ async function login(req, res) {
 
       if (!foundUser) {
          res.status(400).json({
-            message: "failure",
+            message: "Please check your email and password.",
             payload: "Please check your email and password."
          });
       } else {
@@ -74,7 +78,7 @@ async function login(req, res) {
 
          if (!comparedPassword) {
             res.status(400).json({
-               message: "failure",
+               message: "Please check your email and password.",
                payload: "Please check your email and password.",
             })
          } else {
@@ -111,30 +115,7 @@ async function login(req, res) {
    };
 };
 
-// to get all users real quick
-async function getAllUsers(req, res) {
-   try{
-      let foundAllUsers = await User.find({});
-      res.json({message: "success", data: foundAllUsers})
-   } catch(e){
-      res.json({ message: "error", error: e });
-   }
-};
-
-// to clear users momentarily
-async function deleteUserById(req, res) {
-   try {
-      let deletedUser = await User.findByIdAndDelete(req.params.id);
-      
-      res.json({message: "success", data: deletedUser })
-   } catch(e) {
-      res.status(500).json({ message: "error", error: e.message })
-   }
-};
-
 module.exports = {
    signup,
    login,
-   getAllUsers,
-   deleteUserById,
 };
